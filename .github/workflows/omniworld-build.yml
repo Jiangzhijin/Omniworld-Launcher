@@ -1,0 +1,30 @@
+name: Build Omniworld (Windows)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-latest
+    env:
+      VERSION_ROOT: '1.2'
+      BUILD_NUMBER: '0'
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-java@v6
+        with:
+          distribution: liberica
+          java-version: '17'
+          java-package: jdk+fx
+      - uses: gradle/actions/setup-gradle@v5
+      - name: Build launcher
+        run: .\gradlew.bat :HMCL:makeExecutables --console=plain
+      - name: Test preferences and device OAuth
+        run: .\gradlew.bat :HMCL:test --tests org.jackhuang.hmcl.setting.OmniworldPreferencesTest :HMCLCore:test --tests org.jackhuang.hmcl.auth.OAuthDeviceFlowTest --console=plain
+      - uses: actions/upload-artifact@v7
+        with:
+          name: Omniworld-1.2.0-Windows
+          path: |
+            HMCL/build/libs/HMCL-*.exe
+            HMCL/build/libs/HMCL-*.jar
+            HMCL/build/libs/HMCL-*.sha256

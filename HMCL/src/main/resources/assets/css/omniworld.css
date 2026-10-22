@@ -1,0 +1,135 @@
+/* Omniworld desktop shell. JavaFX CSS, with an illustrated full-width home. */
+.root { -fx-font-family: "Microsoft YaHei UI"; -fx-font-size: 13px; }
+.jfx-decorator-content-container { -fx-background-color: -monet-surface; }
+.omni-titlebar-brand { -fx-text-fill: #746e80; -fx-font-size: 10px; -fx-font-weight: bold; -fx-padding: 0 0 0 10; }
+.voyage-home { -fx-background-color: #faf9fc; }
+.voyage-navigation { -fx-padding: 14 24 15 24; -fx-min-height: 64; }
+.voyage-nav { -fx-padding: 8 18; -fx-text-fill: #7d7787; -fx-font-size: 12px; -fx-background-radius: 10; -fx-cursor: hand; }
+.voyage-nav:hover { -fx-background-color: #eeeaf4; -fx-text-fill: #564069; }
+.voyage-nav:focused { -fx-border-color: #a18cb9; -fx-border-radius: 10; }
+.voyage-nav-selected { -fx-background-color: #eae4f2; -fx-text-fill: #695281; -fx-font-weight: bold; }
+.voyage-account { -fx-background-color: #ffffff; -fx-border-color: #e8e4ed; -fx-border-radius: 12; -fx-graphic-text-gap: 8; -fx-text-fill: #63596f; }
+.voyage-account .svg { -fx-fill: #8e7ba4; }
+.voyage-artwork {
+    -fx-background-color: #e9e2f3;
+    -fx-background-image: url("../img/omniworld-elaina.png");
+    -fx-background-size: cover;
+    -fx-background-position: center 42%;
+    -fx-background-radius: 16;
+}
+.voyage-copy {
+    -fx-padding: 22 30;
+    -fx-background-color: linear-gradient(to right, #f4effcee 0%, #f4effca6 70%, #f4effc00 100%);
+}
+.voyage-edition { -fx-text-fill: #776189; -fx-font-size: 9px; -fx-font-weight: bold; }
+.voyage-heading { -fx-text-fill: #352944; -fx-font-size: 40px; -fx-font-weight: bold; -fx-line-spacing: 3; }
+.voyage-subtitle { -fx-text-fill: #756680; -fx-font-size: 11px; }
+.voyage-explore { -fx-padding: 8 0; -fx-text-fill: #644b80; -fx-font-size: 11px; -fx-font-weight: bold; }
+.voyage-explore:hover { -fx-background-color: transparent; -fx-text-fill: #3b2654; }
+.voyage-signature { -fx-font-size: 9px; -fx-text-fill: #fff7ff; -fx-effect: dropshadow(gaussian, #3a254b88, 7, 0, 0, 1); -fx-text-alignment: right; }
+.voyage-dock { -fx-padding: 20 26 10 26; -fx-min-height: 94; }
+.voyage-world-glyph { -fx-min-width: 48; -fx-min-height: 48; -fx-alignment: center; -fx-background-color: #eee8f5; -fx-background-radius: 14; -fx-text-fill: #8c70ab; -fx-font-size: 30px; }
+.voyage-overline { -fx-text-fill: #a19aa9; -fx-font-size: 9px; }
+.voyage-game-name { -fx-text-fill: #443b50; -fx-font-size: 15px; -fx-font-weight: bold; }
+.voyage-muted { -fx-text-fill: #a19aa9; -fx-font-size: 10px; }
+.voyage-status { -fx-padding: 2 26 16 26; }
+.voyage-credit { -fx-text-fill: #b0a8b8; -fx-font-size: 9px; }
+.voyage-keep-open { -fx-text-fill: #9c93a7; -fx-font-size: 10px; }
+.omni-launch-controls { -fx-spacing: 0; -fx-alignment: center; -fx-min-height: 50; -fx-max-height: 50; }
+.omni-launch-controls > .jfx-button { -fx-min-height: 50; -fx-max-height: 50; -fx-background-color: #78608e; -fx-cursor: hand; }
+.omni-launch-controls > .jfx-button:hover { -fx-background-color: #69517f; }
+.omni-launch-controls > .launch-button { -fx-min-width: 172; -fx-background-radius: 13 0 0 13; -fx-padding: 5 16; }
+.omni-launch-controls > .menu-button { -fx-min-width: 36; -fx-background-radius: 0 13 13 0; -fx-padding: 0; }
+.omni-launch-controls .label { -fx-text-fill: #ffffff; }
+.omni-launch-controls .svg { -fx-fill: #ffffffcc; }
+.card, .card-non-transparent, .card-no-padding { -fx-background-radius: 14; -fx-border-radius: 14; }
+.omni-window-buttons { -fx-padding: 13 14; -fx-spacing: 8; }
+.omni-window-buttons > .jfx-button {
+    -fx-min-width: 12; -fx-max-width: 12; -fx-pref-width: 12;
+    -fx-min-height: 12; -fx-max-height: 12; -fx-pref-height: 12;
+    -fx-padding: 0; -fx-background-radius: 20;
+}
+.omni-window-close { -fx-background-color: #ff6058; }
+.omni-window-minimize { -fx-background-color: #ffbd2e; }
+.omni-window-help { -fx-background-color: #28c840; }
+.omni-window-buttons .svg { -fx-opacity: 0; }
+.omni-window-buttons:hover .svg { -fx-opacity: 0.65; }
+/* Secondary pages share the same quiet desktop material and spacing. */
+.card, .card-no-padding, .card-non-transparent {
+    -fx-effect: dropshadow(gaussian, #45375412, 12, 0, 0, 2);
+    -fx-border-color: -monet-outline-variant;
+    -fx-border-width: 0.5;
+}
+.voyage-library { -fx-background-color: -monet-surface; }
+.voyage-library .notice-pane > .label { -fx-font-size: 14px; -fx-text-fill: -monet-on-surface-variant; -fx-line-spacing: 8; }
+.voyage-library .navigation-drawer-item { -fx-background-radius: 10; }
+/* Refined pearl surfaces, warm foil details and a softly illuminated launch dock. */
+.voyage-home { -fx-background-color: linear-gradient(to bottom right, #fcfbfe, #f4eff9); }
+.voyage-navigation { -fx-padding: 17 28 18 28; -fx-min-height: 70; }
+.voyage-nav { -fx-padding: 8 20; -fx-background-radius: 12; }
+.voyage-nav-selected {
+    -fx-background-color: linear-gradient(to bottom, #f5f0fb, #e9e0f3);
+    -fx-border-color: #ffffff; -fx-border-radius: 12; -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, #8666a51a, 10, 0, 0, 3);
+}
+.voyage-account {
+    -fx-background-color: linear-gradient(to bottom, #ffffff, #f8f5fc);
+    -fx-border-color: #ffffff; -fx-border-radius: 12;
+    -fx-effect: dropshadow(gaussian, #79638d18, 12, 0, 0, 3);
+}
+.voyage-artwork { -fx-border-color: #ffffffb3; -fx-border-radius: 17; -fx-border-width: 1; }
+.voyage-copy { -fx-padding: 24 32; }
+.voyage-heading { -fx-font-size: 46px; -fx-text-fill: #392948; }
+.voyage-edition {
+    -fx-font-size: 9px; -fx-text-fill: #80658f;
+    -fx-background-color: #ffffff80; -fx-background-radius: 20;
+    -fx-border-color: #ffffffb3; -fx-border-radius: 20;
+    -fx-padding: 6 10;
+}
+.voyage-chapter { -fx-font-size: 9px; -fx-text-fill: #97859f; -fx-padding: 10 0 0 0; }
+.voyage-explore { -fx-padding: 9 14; -fx-background-color: #ffffff66; -fx-border-color: #ffffffa6; -fx-border-radius: 10; }
+.voyage-explore:hover { -fx-background-color: #ffffffe0; -fx-effect: dropshadow(gaussian, #b391ce33, 12, 0, 0, 2); }
+.voyage-dock {
+    -fx-background-color: linear-gradient(to bottom, #ffffffed, #fdfbffcc);
+    -fx-background-radius: 19; -fx-border-color: #ffffff; -fx-border-radius: 19;
+    -fx-effect: dropshadow(gaussian, #7d5c9e12, 18, 0, 0, 5);
+    -fx-padding: 16 18; -fx-min-height: 86;
+}
+.voyage-world-glyph {
+    -fx-background-color: linear-gradient(to bottom right, #f5edfe, #e7daf3);
+    -fx-border-color: #ffffff; -fx-border-radius: 15;
+    -fx-effect: dropshadow(gaussian, #9771bf26, 12, 0, 0, 3);
+}
+.voyage-game-name { -fx-font-size: 16px; }
+.voyage-status { -fx-padding: 13 28 15 28; }
+.omni-launch-controls > .jfx-button { -fx-background-color: linear-gradient(to bottom right, #9675b6, #73548e); }
+.omni-launch-controls > .jfx-button:hover {
+    -fx-background-color: linear-gradient(to bottom right, #a284c0, #80609b);
+    -fx-effect: dropshadow(gaussian, #9b73c166, 18, 0, 0, 3);
+}
+.omni-launch-controls > .launch-button { -fx-border-color: #ffffff42; -fx-border-width: 1 0 1 1; -fx-border-radius: 13 0 0 13; }
+.omni-launch-controls > .menu-button { -fx-border-color: #ffffff42; -fx-border-width: 1 1 1 0; -fx-border-radius: 0 13 13 0; }
+
+/* Dedicated preferences screen; the home remains free of utility switches. */
+.voyage-settings-scroll { -fx-background-color: -monet-surface; -fx-background: -monet-surface; }
+.voyage-settings-scroll > .viewport { -fx-background-color: -monet-surface; }
+.voyage-settings-content { -fx-padding: 30 36; }
+.voyage-settings-title { -fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: -monet-on-surface; }
+.voyage-settings-caption { -fx-font-size: 12px; -fx-text-fill: -monet-on-surface-variant; }
+.voyage-preference-card {
+    -fx-padding: 22; -fx-spacing: 17;
+    -fx-background-color: -monet-surface-container-low;
+    -fx-background-radius: 18;
+    -fx-border-color: -monet-outline-variant; -fx-border-radius: 18; -fx-border-width: 0.6;
+}
+.voyage-preference-heading { -fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: -monet-primary; }
+.voyage-preference-label { -fx-font-size: 14px; -fx-font-weight: bold; }
+.voyage-preference-toggle { -fx-font-size: 14px; -fx-padding: 4 0; }
+.voyage-preference-card .combo-box {
+    -fx-background-color: -monet-surface-container-lowest;
+    -fx-background-radius: 10;
+    -fx-border-color: -monet-outline-variant; -fx-border-radius: 10;
+    -fx-padding: 5 8; -fx-min-width: 180;
+}
+.voyage-preference-card .slider .track { -fx-background-color: -monet-secondary-container; -fx-background-radius: 8; }
+.voyage-preference-card .slider .thumb { -fx-background-color: -monet-primary; -fx-background-radius: 10; }
