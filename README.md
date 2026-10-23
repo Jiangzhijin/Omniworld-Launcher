@@ -1,16 +1,17 @@
 # Omniworld Launcher
 
-基于 [HMCL 3.17.0.361](https://github.com/HMCL-dev/HMCL) 的非官方 Minecraft Java 版启动器定制项目。当前定制版本：**1.2.0**。
+基于 [HMCL 3.17.0.361](https://github.com/HMCL-dev/HMCL) 的非官方 Minecraft Java 版启动器定制项目。当前定制版本：**1.3.0**。
 
 ![Omniworld / Elaina](HMCL/src/main/resources/assets/img/omniworld-elaina.png)
 
 ## 功能
 
 - mac 风格窗口、顶部导航、伊蕾娜主题首页及统一启动区域。
+- 账号、下载、游戏管理和高级设置共用全新侧栏与章节式工作区；弹窗、输入框、下拉菜单、设置卡片、资源列表及表格统一样式。
 - 双层魔法阵、星尘、流星、鼠标拖尾与点击涟漪，支持显示脉冲同步和可选帧率限制。
 - 自定义头像 EXE 图标、猫咪鼠标和轻柔点击音效；动效、音效和鼠标偏好可在设置中调整。
 - 默认保持启动器可见，覆盖旧游戏配置中的隐藏/关闭行为；可在设置中关闭这一覆盖。
-- Minecraft 默认窗口为 **1920 × 1680**，已有明确自定义尺寸保持有效。
+- Minecraft 默认窗口为 **1600 × 900**；旧版的 1920 × 1680 配置会迁移，其他自定义尺寸保持有效。
 - 修正微软设备码登录请求参数和错误响应处理；支持配置自己的公共 Microsoft 应用 Client ID。
 
 ## 构建与运行
@@ -26,12 +27,12 @@ Windows PowerShell：
 也可以手动构建：
 
 ```powershell
-$env:VERSION_ROOT = '1.2'
+$env:VERSION_ROOT = '1.3'
 $env:BUILD_NUMBER = '0'
 .\gradlew.bat :HMCL:makeExecutables
 ```
 
-输出在 `HMCL/build/libs/`，Windows 双击 EXE 或运行 `java -jar HMCL/build/libs/HMCL-1.2.0.jar`。
+输出在 `HMCL/build/libs/`，Windows 双击 EXE 或运行 `java -jar HMCL/build/libs/HMCL-1.3.0.jar`。
 Windows 构建会在追加 JAR 前修改 EXE 引导程序的图标资源；其他平台可构建 JAR。预生成的素材已纳入源码，无需原始参考图。
 
 修改头像素材时，可运行 `tools/Prepare-OmniworldAssets.ps1 -SourceImage <图片路径>`。该脚本也会重新生成点击音效。
@@ -51,6 +52,15 @@ GitHub 的 Actions 页面提供手动触发的 **Build Omniworld (Windows)** 工
 ```
 
 已执行 Windows 构建、EXE 启动与图标提取检查、设置保存与尺寸解析测试、设备码 OAuth 本地 HTTP 回归测试。真实微软账户端到端登录、所有整合包和真实游戏窗口尺寸尚未全面实测。
+
+桌面 UI 冒烟检查（需图形环境，使用独立测试配置）：
+
+```powershell
+$env:OMNIWORLD_UI_QA = 'true'
+.\gradlew.bat :HMCL:test --tests org.jackhuang.hmcl.ui.WorkspaceAppearanceTest
+```
+
+会检查真实功能页与设置标签，并在 `HMCL/build/ui-review/` 输出常规和紧凑尺寸的预览图。
 
 ## 来源与许可证
 

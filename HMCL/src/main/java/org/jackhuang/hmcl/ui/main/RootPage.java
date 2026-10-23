@@ -60,6 +60,7 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
     private MainPage mainPage = null;
 
     public RootPage() {
+        getStyleClass().remove("voyage-workspace");
         getStyleClass().remove("gray-background");
         getLeft().getStyleClass().add("gray-background");
     }

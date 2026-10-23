@@ -479,7 +479,7 @@ public final class GameSettingsPage<S extends GameSettings> extends StackPane
                 var cboWindowSize = new JFXComboBox<String>();
                 cboWindowSize.setPrefWidth(150);
                 cboWindowSize.setEditable(true);
-                cboWindowSize.setPromptText("854x480");
+                cboWindowSize.setPromptText("1600x900");
                 cboWindowSize.getItems().setAll(getSupportedResolutions());
                 @Nullable JFXButton windowSizeInheritanceButton = !isPresetSetting ? createInheritanceButton() : null;
                 bindWindowSizeComboBox(cboWindowSize, windowSizeInheritanceButton);

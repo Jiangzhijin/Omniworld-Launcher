@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: windows-latest
     env:
-      VERSION_ROOT: '1.2'
+      VERSION_ROOT: '1.3'
       BUILD_NUMBER: '0'
     steps:
       - uses: actions/checkout@v6
@@ -23,7 +23,7 @@ jobs:
         run: .\gradlew.bat :HMCL:test --tests org.jackhuang.hmcl.setting.OmniworldPreferencesTest :HMCLCore:test --tests org.jackhuang.hmcl.auth.OAuthDeviceFlowTest --console=plain
       - uses: actions/upload-artifact@v7
         with:
-          name: Omniworld-1.2.0-Windows
+          name: Omniworld-1.3.0-Windows
           path: |
             HMCL/build/libs/HMCL-*.exe
             HMCL/build/libs/HMCL-*.jar

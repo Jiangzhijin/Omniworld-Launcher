@@ -1,7 +1,7 @@
 param([switch]$Offline)
 $ErrorActionPreference = 'Stop'
 $repository = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
-$env:VERSION_ROOT = '1.2'
+$env:VERSION_ROOT = '1.3'
 $env:BUILD_NUMBER = '0'
 Push-Location $repository
 try {

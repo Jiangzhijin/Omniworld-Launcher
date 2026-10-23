@@ -52,10 +52,12 @@ public final class AboutPage extends SpinnerPane {
 
         ComponentList about = new ComponentList();
         {
-            var launcher = LineButton.createExternalLinkButton(Metadata.PUBLISH_URL);
+            var launcher = LineButton.createExternalLinkButton("https://github.com/Jiangzhijin/Omniworld-Launcher");
             launcher.setLargeTitle(true);
-            launcher.setLeading(FXUtils.newBuiltinImage("/assets/img/icon.png"));
-            launcher.setTitle("Hello Minecraft! Launcher");
+            var launcherIcon = new ImageContainer(48, 48);
+            launcherIcon.setImage(FXUtils.newBuiltinImage("/assets/img/omniworld-icon.png"));
+            launcher.setLeading(launcherIcon);
+            launcher.setTitle(Metadata.FULL_NAME);
             launcher.setSubtitle(Metadata.VERSION);
 
             var author = LineButton.createExternalLinkButton("https://space.bilibili.com/1445341");
@@ -64,7 +66,10 @@ public final class AboutPage extends SpinnerPane {
             author.setTitle("huanghongxun");
             author.setSubtitle(i18n("about.author.statement"));
 
-            about.getContent().setAll(launcher, author);
+            var upstream = LineButton.createExternalLinkButton("https://github.com/HMCL-dev/HMCL");
+            upstream.setTitle("Hello Minecraft! Launcher");
+            upstream.setSubtitle("基于 HMCL 的非官方定制版本 · 保留原作者署名与 GPLv3 许可证");
+            about.getContent().setAll(launcher, upstream, author);
         }
 
         ComponentList thanks = loadIconedTwoLineList("/assets/about/thanks.json");

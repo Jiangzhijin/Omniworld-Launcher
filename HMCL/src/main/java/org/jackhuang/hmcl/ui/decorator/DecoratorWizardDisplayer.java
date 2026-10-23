@@ -18,7 +18,11 @@
 package org.jackhuang.hmcl.ui.decorator;
 
 import javafx.scene.Node;
+import javafx.beans.binding.Bindings;
 import javafx.scene.control.SkinBase;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import org.jackhuang.hmcl.task.Task;
 import org.jackhuang.hmcl.ui.animation.Motion;
 import org.jackhuang.hmcl.ui.construct.Navigator;
@@ -130,10 +134,23 @@ public class DecoratorWizardDisplayer extends DecoratorTransitionPage implements
 
     private static class Skin extends SkinBase<DecoratorWizardDisplayer> {
 
+        /// Frames installation and export steps with the shared chapter heading.
         protected Skin(DecoratorWizardDisplayer control) {
             super(control);
 
-            getChildren().setAll(control.transitionPane);
+            Label chapter = new Label("✧  OMNIWORLD / 旅程向导");
+            chapter.getStyleClass().add("voyage-workspace-eyebrow");
+            Label title = new Label();
+            title.getStyleClass().add("voyage-workspace-title");
+            title.setWrapText(true);
+            title.textProperty().bind(Bindings.createStringBinding(
+                    () -> control.stateProperty().get().title(), control.stateProperty()));
+            VBox banner = new VBox(8, chapter, title);
+            banner.getStyleClass().add("voyage-workspace-banner");
+            BorderPane frame = new BorderPane(control.transitionPane);
+            frame.setTop(banner);
+            frame.getStyleClass().add("voyage-workspace-body");
+            getChildren().setAll(frame);
         }
     }
 }

@@ -50,7 +50,8 @@ public final class StyleSheets {
                 getThemeStyleSheet(),
                 getBrightnessStyleSheet(),
                 "/assets/css/root.css",
-                "/assets/css/omniworld.css"
+                "/assets/css/omniworld.css",
+                "/assets/css/omniworld-controls.css"
         };
         stylesheets = FXCollections.observableList(Arrays.asList(array));
 

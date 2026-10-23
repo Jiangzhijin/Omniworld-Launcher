@@ -16,12 +16,28 @@ final class OmniworldPreferencesTest {
     void resolvesDefaultGameWindowAndCustomOverride() {
         GameSettings.Preset preset = new GameSettings.Preset(GameSettingsPresetID.NIL);
         GameSettings.Effective settings = GameSettings.resolve(preset, null);
-        assertEquals(1920, settings.getWidth());
-        assertEquals(1680, settings.getHeight());
+        assertEquals(1600, settings.getWidth());
+        assertEquals(900, settings.getHeight());
         preset.widthProperty().setValue(1280.0);
         preset.heightProperty().setValue(720.0);
         assertEquals(1280, settings.getWidth());
         assertEquals(720, settings.getHeight());
+    }
+
+    /// Stored sizes from 1.2 migrate while ordinary user-defined sizes survive loading.
+    @Test
+    void migratesPreviousBundledResolution() {
+        for (Class<? extends GameSettings> type : java.util.List.of(GameSettings.Instance.class, GameSettings.Preset.class)) {
+            String id = "\"id\":\"" + GameSettingsPresetID.generate() + "\",";
+            GameSettings migrated = Objects.requireNonNull(LauncherSettings.SETTINGS_GSON.fromJson(
+                    "{" + id + "\"width\":1920,\"height\":1680}", type));
+            assertEquals(1600.0, migrated.widthProperty().getValue());
+            assertEquals(900.0, migrated.heightProperty().getValue());
+            GameSettings custom = Objects.requireNonNull(LauncherSettings.SETTINGS_GSON.fromJson(
+                    "{" + id + "\"width\":1920,\"height\":1080}", type));
+            assertEquals(1920.0, custom.widthProperty().getValue());
+            assertEquals(1080.0, custom.heightProperty().getValue());
+        }
     }
 
     /// Ambient effects default to enabled and an explicit opt-out persists through JSON storage.

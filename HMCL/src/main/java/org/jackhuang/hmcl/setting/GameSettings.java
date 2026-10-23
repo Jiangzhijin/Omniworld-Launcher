@@ -174,6 +174,15 @@ public sealed abstract class GameSettings extends ObservableSetting {
             protected Instance createInstance() {
                 return new Instance();
             }
+
+            /// Updates only the obsolete bundled 1.2 window size when restoring an instance.
+            @Override
+            public @Nullable Instance deserialize(JsonElement json, Type typeOfT,
+                                                  JsonDeserializationContext context) throws JsonParseException {
+                @Nullable Instance result = super.deserialize(json, typeOfT, context);
+                if (result != null) migrateBundledWindowSize(result);
+                return result;
+            }
         }
     }
 
@@ -242,6 +251,7 @@ public sealed abstract class GameSettings extends ObservableSetting {
                     Type typeOfT,
                     JsonDeserializationContext context) throws JsonParseException {
                 @Nullable Preset result = super.deserialize(json, typeOfT, context);
+                if (result != null) migrateBundledWindowSize(result);
                 if (result != null && GameSettingsPresetID.NIL.equals(result.idProperty().getValue())) {
                     throw new JsonParseException("Preset ID cannot be nil");
                 }
@@ -526,7 +536,7 @@ public sealed abstract class GameSettings extends ObservableSetting {
 
     /// The width of the game window.
     @SerializedName(PROPERTY_WIDTH)
-    private final InheritableProperty<Double> width = newInheritableProperty(PROPERTY_WIDTH, 1920.0);
+    private final InheritableProperty<Double> width = newInheritableProperty(PROPERTY_WIDTH, 1600.0);
 
     /// Returns the game window width property.
     public InheritableProperty<Double> widthProperty() {
@@ -538,7 +548,16 @@ public sealed abstract class GameSettings extends ObservableSetting {
 
     /// The height of the game window.
     @SerializedName(PROPERTY_HEIGHT)
-    private final InheritableProperty<Double> height = newInheritableProperty(PROPERTY_HEIGHT, 1680.0);
+    private final InheritableProperty<Double> height = newInheritableProperty(PROPERTY_HEIGHT, 900.0);
+
+    /// Replaces the former bundled 1920×1680 pair; other saved custom dimensions remain unchanged.
+    private static void migrateBundledWindowSize(GameSettings setting) {
+        if (Objects.equals(setting.widthProperty().getValue(), 1920.0)
+                && Objects.equals(setting.heightProperty().getValue(), 1680.0)) {
+            setting.widthProperty().setValue(1600.0);
+            setting.heightProperty().setValue(900.0);
+        }
+    }
 
     /// Returns the game window height property.
     public InheritableProperty<Double> heightProperty() {

@@ -142,8 +142,10 @@ public class ComponentList extends Control implements NoPaddingComponent {
         return createComponentListTitle(title, null);
     }
 
+    /// Builds a section heading with an optional help tooltip in the shared preferences layout.
     public static Node createComponentListTitle(String title, @Nullable String helpMessage) {
         HBox node = new HBox(4);
+        node.getStyleClass().add("voyage-section-heading");
         node.setAlignment(Pos.CENTER_LEFT);
         node.setPadding(new Insets(8, 0, 0, 0));
 

@@ -61,7 +61,7 @@ public class FeedbackPage extends SpinnerPane {
 
         ComponentList feedback = new ComponentList();
         {
-            var github = LineButton.createExternalLinkButton("https://github.com/HMCL-dev/HMCL/issues/new/choose");
+            var github = LineButton.createExternalLinkButton("https://github.com/Jiangzhijin/Omniworld-Launcher/issues/new");
             github.setLargeTitle(true);
             github.setTitle(i18n("contact.feedback.github"));
             github.setSubtitle(i18n("contact.feedback.github.statement"));
@@ -76,7 +76,7 @@ public class FeedbackPage extends SpinnerPane {
         }
 
         content.getChildren().addAll(
-                ComponentList.createComponentListTitle(i18n("contact.chat")),
+                ComponentList.createComponentListTitle("HMCL 原项目社区"),
                 groups,
                 ComponentList.createComponentListTitle(i18n("contact.feedback")),
                 feedback

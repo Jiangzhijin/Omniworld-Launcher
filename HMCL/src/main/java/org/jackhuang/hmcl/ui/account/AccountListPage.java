@@ -24,6 +24,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Skin;
 import javafx.scene.control.Tooltip;
@@ -123,13 +125,7 @@ public final class AccountListPage extends DecoratorAnimatedPage implements Deco
                     microsoftItem.getStyleClass().add("navigation-drawer-item");
                     microsoftItem.setTitle(i18n("account.methods.microsoft"));
                     microsoftItem.setLeftIcon(SVG.MICROSOFT);
-                    microsoftItem.setOnAction(e -> {
-                        if (SettingsManager.isUserGameAccountsReadOnly()) {
-                            confirmOverwriteUserAccounts(() -> Controllers.dialog(new MicrosoftAccountLoginPane()));
-                        } else {
-                            Controllers.dialog(new MicrosoftAccountLoginPane());
-                        }
-                    });
+                    microsoftItem.setOnAction(e -> loginMicrosoft());
 
                     AdvancedListItem offlineItem = new AdvancedListItem();
                     offlineItem.getStyleClass().add("navigation-drawer-item");
@@ -234,7 +230,32 @@ public final class AccountListPage extends DecoratorAnimatedPage implements Deco
                 scrollPane.setContent(list);
                 FXUtils.smoothScrolling(scrollPane);
 
-                setCenter(scrollPane);
+                Label glyph = new Label("✧");
+                glyph.getStyleClass().add("voyage-empty-glyph");
+                Label heading = new Label("为旅途，选择一个身份");
+                heading.getStyleClass().add("voyage-empty-title");
+                Label caption = new Label("登录微软账户，或在左侧选择其他登录方式。\n你的冒险将从这里开始。");
+                caption.getStyleClass().add("voyage-empty-caption");
+                caption.setWrapText(true);
+                var login = FXUtils.newRaisedButton(i18n("account.methods.microsoft"));
+                login.setOnAction(event -> loginMicrosoft());
+                VBox empty = new VBox(16, glyph, heading, caption, login);
+                empty.setAlignment(Pos.CENTER);
+                empty.getStyleClass().add("voyage-empty");
+                empty.visibleProperty().bind(Bindings.isEmpty(skinnable.accounts));
+                empty.managedProperty().bind(empty.visibleProperty());
+                scrollPane.visibleProperty().bind(empty.visibleProperty().not());
+                scrollPane.managedProperty().bind(scrollPane.visibleProperty());
+                setCenter(scrollPane, empty);
+            }
+        }
+
+        /// Opens Microsoft login while preserving read-only account-file confirmation.
+        private static void loginMicrosoft() {
+            if (SettingsManager.isUserGameAccountsReadOnly()) {
+                confirmOverwriteUserAccounts(() -> Controllers.dialog(new MicrosoftAccountLoginPane()));
+            } else {
+                Controllers.dialog(new MicrosoftAccountLoginPane());
             }
         }
 

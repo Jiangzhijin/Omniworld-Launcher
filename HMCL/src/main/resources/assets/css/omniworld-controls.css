@@ -1,0 +1,202 @@
+/* Shared Omniworld visual system. Palette roles retain theme/contrast support. */
+.root {
+    -voyage-panel: -monet-surface-container-lowest;
+    -voyage-paper: -monet-surface-container-low;
+    -voyage-ink: -monet-on-surface;
+    -voyage-muted: -monet-on-surface-variant;
+    -voyage-line: -monet-outline-variant;
+    -voyage-accent: -monet-primary;
+    -fx-accent: -voyage-accent;
+    -fx-focus-color: -voyage-accent;
+    -fx-faint-focus-color: transparent;
+}
+
+/* Inner pages are desktops with a separate navigation rail and a chapter banner. */
+.voyage-workspace, .content-background, .gray-background {
+    -fx-background-color: -voyage-paper;
+}
+.voyage-rail {
+    -fx-min-width: 224; -fx-pref-width: 224; -fx-max-width: 224;
+    -fx-padding: 24 12 18 12; -fx-background-color: -monet-surface-container;
+    -fx-border-color: -voyage-line; -fx-border-width: 0 1 0 0;
+}
+.voyage-rail-brand { -fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: -voyage-accent; -fx-padding: 0 10; }
+.voyage-rail-caption { -fx-font-size: 10px; -fx-text-fill: -voyage-muted; -fx-padding: 0 10 20 10; }
+.voyage-rail-footer { -fx-font-size: 10px; -fx-text-fill: -voyage-muted; -fx-padding: 12 10 0 10; }
+.voyage-workspace-body { -fx-padding: 0 24 22 24; }
+.voyage-workspace-banner {
+    -fx-padding: 20 8 22 8; -fx-min-height: 100;
+    -fx-border-color: -voyage-line; -fx-border-width: 0 0 1 0;
+}
+.voyage-workspace-eyebrow { -fx-font-size: 9px; -fx-text-fill: -voyage-accent; -fx-font-weight: bold; }
+.voyage-workspace-title { -fx-font-size: 27px; -fx-font-weight: bold; -fx-text-fill: -voyage-ink; }
+.voyage-workspace-seal { -fx-font-size: 46px; -fx-text-fill: -voyage-accent; -fx-opacity: 0.45; -fx-padding: 0 8; }
+.voyage-empty { -fx-padding: 40; -fx-background-color: -voyage-panel; -fx-background-radius: 22; -fx-border-color: -voyage-line; -fx-border-radius: 22; -fx-border-width: 0.7; }
+.voyage-empty-glyph { -fx-font-size: 80px; -fx-text-fill: -voyage-accent; }
+.voyage-empty-title { -fx-font-size: 23px; -fx-font-weight: bold; -fx-text-fill: -voyage-ink; }
+.voyage-empty-caption { -fx-font-size: 13px; -fx-text-fill: -voyage-muted; -fx-text-alignment: center; -fx-line-spacing: 6; }
+.voyage-workspace-content { -fx-padding: 14 0 0 0; }
+.voyage-workspace .scroll-pane, .voyage-workspace .scroll-pane > .viewport,
+.voyage-rail .gray-background { -fx-background-color: transparent; -fx-background: transparent; }
+.voyage-workspace .card-list { -fx-padding: 8 4 24 4; -fx-spacing: 14; }
+.voyage-section-heading { -fx-padding: 18 8 4 8; -fx-spacing: 8; }
+.voyage-section-heading > .label { -fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: -voyage-accent; }
+
+/* Navigation uses compact inset tiles rather than Material drawer rows. */
+.advanced-list-box-content { -fx-padding: 6 0; -fx-spacing: 6; }
+.class-title { -fx-padding: 16 10 8 10; }
+.class-title Text { -fx-fill: -voyage-muted; -fx-font-size: 10px; }
+.class-title Rectangle { -fx-fill: transparent; }
+.advanced-list-item { -fx-padding: 2 0; }
+.advanced-list-item > .rippler-container > .container,
+.game-directory-list-item > .rippler-container > BorderPane {
+    -fx-background-color: transparent; -fx-background-radius: 12;
+    -fx-border-color: transparent; -fx-border-radius: 12; -fx-padding: 10 12;
+}
+.navigation-drawer-item > .rippler-container > .container > VBox { -fx-padding: 0; }
+.advanced-list-item:hover > .rippler-container > .container,
+.game-directory-list-item:hover > .rippler-container > BorderPane { -fx-background-color: -monet-surface-container-high; }
+.advanced-list-item:selected > .rippler-container > .container,
+.game-directory-list-item:selected > .rippler-container > BorderPane {
+    -fx-background-color: -monet-secondary-container; -fx-border-color: -voyage-line;
+}
+.advanced-list-item > .rippler-container > .container > .two-line-list-item > .first-line > .title { -fx-font-size: 13px; }
+.advanced-list-item:selected > .rippler-container > .container > .two-line-list-item > .first-line > .title { -fx-font-weight: bold; }
+
+/* Rounded settings groups, with more breathing room and a clear title hierarchy. */
+.options-list {
+    -fx-background-color: -voyage-panel; -fx-background-radius: 18;
+    -fx-border-color: -voyage-line; -fx-border-radius: 18; -fx-border-width: 0.7;
+}
+.options-list-item { -fx-background-color: transparent; -fx-border-color: -voyage-line; -fx-border-width: 0.5 0 0 0; -fx-padding: 15 20; -fx-font-size: 13px; }
+.options-list-item:first { -fx-background-radius: 18 18 0 0; -fx-border-width: 0; }
+.options-list-item:last { -fx-background-radius: 0 0 18 18; }
+.options-list-item:first:last { -fx-background-radius: 18; -fx-border-width: 0; }
+.options-list-item.no-padding { -fx-padding: 0; }
+.options-sublist, .options-sublist .options-list-item, .options-sublist-wrapper > .container { -fx-background-color: -voyage-paper; }
+.options-sublist-wrapper > .container { -fx-background-radius: 0 0 17 17; -fx-padding: 4 12 10 12; }
+.line-component .line-component-container { -fx-padding: 14 20; }
+.line-component .title-label { -fx-font-size: 13px; }
+.line-component .subtitle-label { -fx-font-size: 11px; -fx-text-fill: -voyage-muted; }
+.line-component:large-title .title-label { -fx-font-size: 15px; -fx-font-weight: bold; }
+.card, .card-no-padding, .card-non-transparent {
+    -fx-background-color: -voyage-panel; -fx-background-radius: 18;
+    -fx-border-radius: 18; -fx-border-color: -voyage-line; -fx-border-width: 0.7;
+    -fx-effect: null;
+}
+.card { -fx-padding: 20; }
+.card-list { -fx-spacing: 14; -fx-padding: 18; }
+.md-list-cell { -fx-padding: 14 18; -fx-background-radius: 12; -fx-border-color: -voyage-line; -fx-border-width: 0 0 0.5 0; }
+.md-list-cell:selected { -fx-background-color: -monet-secondary-container; }
+.two-line-list-item > .first-line > .title { -fx-font-size: 14px; }
+.two-line-list-item > HBox > .subtitle { -fx-font-size: 11px; }
+
+/* Desktop buttons; preserve semantic error, accept and primary colors. */
+.jfx-button { -fx-background-radius: 10; -fx-padding: 9 15; -fx-cursor: hand; }
+.jfx-button-border {
+    -fx-background-color: -voyage-panel; -fx-border-color: -voyage-line;
+    -fx-border-width: 1; -fx-border-radius: 10; -fx-text-fill: -voyage-accent;
+}
+.jfx-button-border:hover { -fx-background-color: -monet-secondary-container; }
+.jfx-button-raised { -fx-background-color: -voyage-accent; -fx-background-radius: 11; -fx-effect: null; }
+.jfx-button-raised:hover { -fx-background-color: -monet-secondary; }
+.jfx-button-raised, .jfx-button-raised .label { -fx-text-fill: -monet-on-primary; }
+.toggle-icon4, .toggle-icon-tiny { -fx-padding: 0; -fx-background-radius: 8; }
+.jfx-tool-bar-button, .jfx-decorator-button { -fx-padding: 0; -fx-background-radius: 8; }
+.jfx-tool-bar-second { -fx-background-color: -voyage-panel; -fx-padding: 8 14; }
+.jfx-tool-bar { -fx-border-color: -voyage-line; -fx-border-width: 0 0 0.5 0; }
+.tab-header-background { -fx-background-color: transparent; }
+.tab-rippler { -fx-background-radius: 10; }
+.tab-label { -fx-padding: 10 16; -fx-font-size: 13px; }
+.tab-selected-line { -fx-background-color: -voyage-accent; -fx-background-radius: 4; -fx-pref-height: 3; }
+
+/* Editable fields and the resolution dropdown share a single focus treatment. */
+.text-field, .password-field, .text-area, .jfx-text-field, .jfx-password-field, .jfx-text-area {
+    -fx-background-color: -voyage-paper; -fx-background-radius: 10;
+    -fx-border-color: -voyage-line; -fx-border-width: 1; -fx-border-radius: 10;
+    -fx-padding: 9 12; -fx-text-fill: -voyage-ink; -fx-prompt-text-fill: -voyage-muted;
+    -jfx-focus-color: transparent; -jfx-unfocus-color: transparent;
+}
+.text-field:focused, .password-field:focused, .text-area:focused,
+.jfx-text-field:focused, .jfx-password-field:focused, .jfx-text-area:focused {
+    -fx-border-color: -voyage-accent; -fx-background-color: -voyage-panel;
+}
+.text-area .content { -fx-background-color: transparent; }
+.combo-box, .jfx-combo-box {
+    -fx-background-color: -voyage-panel; -fx-background-radius: 10;
+    -fx-border-color: -voyage-line; -fx-border-radius: 10; -fx-border-width: 1;
+    -fx-padding: 5 8; -fx-min-height: 36;
+    -jfx-focus-color: transparent; -jfx-unfocus-color: transparent;
+}
+.combo-box:focused, .combo-box:showing { -fx-border-color: -voyage-accent; }
+.combo-box .text-field, .jfx-combo-box .text-field { -fx-background-color: transparent; -fx-border-width: 0; -fx-padding: 2 5; }
+.combo-box > .list-cell { -fx-background-color: transparent; -fx-padding: 3 6; }
+.combo-box-popup .list-view {
+    -fx-background-color: -voyage-panel; -fx-background-radius: 13;
+    -fx-border-color: -voyage-line; -fx-border-radius: 13; -fx-padding: 7;
+    -fx-effect: dropshadow(gaussian, #24163230, 18, 0, 0, 5);
+}
+.combo-box-popup .list-view .list-cell, .combo-box-popup .list-view .jfx-list-cell {
+    -fx-background-color: transparent; -fx-background-radius: 8; -fx-padding: 9 12;
+    -fx-text-fill: -voyage-ink; -fx-cursor: hand;
+}
+.combo-box-popup .list-view .list-cell:filled:selected,
+.combo-box-popup .list-view .list-cell:filled:hover { -fx-background-color: -monet-secondary-container; -fx-text-fill: -monet-on-secondary-container; }
+.combo-box-popup .list-view .list-cell:selected .text { -fx-fill: -monet-on-secondary-container; }
+.jfx-combo-box:error, .jfx-text-field:error, .jfx-password-field:error, .jfx-text-area:error { -fx-border-color: -monet-error; }
+
+/* All dialog types, popup menus and context menus use the same floating material. */
+.jfx-dialog-layout {
+    -fx-background-color: -voyage-panel; -fx-background-radius: 22;
+    -fx-border-color: -voyage-line; -fx-border-radius: 22; -fx-border-width: 1;
+    -fx-padding: 8;
+}
+.jfx-layout-heading { -fx-padding: 22 24 10 24; -fx-font-size: 20px; -fx-font-weight: bold; }
+.jfx-layout-body { -fx-padding: 12 24 20 24; -fx-font-size: 13px; }
+.jfx-layout-actions { -fx-padding: 12 24 20 24; -fx-spacing: 10; }
+.dialog-accept { -fx-background-color: -voyage-accent; -fx-text-fill: -monet-on-primary; -fx-background-radius: 10; }
+.dialog-cancel { -fx-background-color: -voyage-paper; -fx-background-radius: 10; }
+.dialog-error { -fx-background-color: -monet-error-container; -fx-text-fill: -monet-on-error-container; }
+.task-executor-dialog-layout { -fx-background-radius: 22; -fx-padding: 20; }
+.jfx-popup-container, .context-menu, .menu-container, .popup-menu-content {
+    -fx-background-color: -voyage-panel; -fx-background-radius: 14;
+}
+.context-menu, .popup-menu-content { -fx-padding: 7; -fx-border-color: -voyage-line; -fx-border-radius: 14; -fx-border-width: 1; }
+.iconed-menu-item { -fx-background-radius: 9; -fx-padding: 2; }
+.iconed-menu-item .iconed-item-container { -fx-padding: 10 14; }
+.menu-item { -fx-padding: 9 14; -fx-background-radius: 8; }
+.menu-item:focused, .menu-container:hover, .menu-container:selected { -fx-background-color: -monet-secondary-container; }
+.menu-item:focused .label { -fx-text-fill: -monet-on-secondary-container; }
+.hint { -fx-background-radius: 12; -fx-border-radius: 12; -fx-padding: 12 16; }
+.code-box { -fx-background-color: -voyage-paper; -fx-background-radius: 14; -fx-border-color: -voyage-line; -fx-border-radius: 14; -fx-padding: 16; }
+.jfx-snackbar-content { -fx-background-radius: 14; -fx-padding: 8 14; }
+.tooltip { -fx-background-color: -monet-inverse-surface; -fx-background-radius: 9; -fx-padding: 8 12; -fx-font-size: 11px; }
+
+/* Switches, progress, resource lists, NBT tables and secondary windows. */
+.check-box .box { -fx-background-color: -voyage-panel; -fx-border-color: -voyage-line; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 4; }
+.check-box:selected .box { -fx-background-color: -voyage-accent; -fx-border-color: -voyage-accent; }
+.check-box:selected .mark { -fx-background-color: -monet-on-primary; }
+.jfx-check-box { -jfx-checked-color: -voyage-accent; -jfx-unchecked-color: -voyage-muted; }
+.jfx-radio-button { -jfx-selected-color: -voyage-accent; -jfx-unselected-color: -voyage-muted; }
+.jfx-toggle-button { -jfx-toggle-color: -monet-on-primary; -jfx-toggle-line-color: -voyage-accent; -jfx-untoggle-color: -voyage-panel; -jfx-untoggle-line-color: -voyage-line; }
+.slider .track, .jfx-slider .track { -fx-background-radius: 6; -fx-background-color: -voyage-line; }
+.slider .thumb, .jfx-slider .thumb { -fx-background-color: -voyage-accent; -fx-background-radius: 12; }
+.jfx-progress-bar > .track, .jfx-progress-bar > .bar, .progress-bar > .track, .progress-bar > .bar { -fx-background-radius: 8; }
+.table-view, .tree-view, .jfx-list-view { -fx-background-color: -voyage-panel; -fx-background-radius: 14; -fx-border-color: -voyage-line; -fx-border-radius: 14; -fx-border-width: 0.7; -fx-padding: 6; }
+.table-view .column-header-background { -fx-background-color: -voyage-paper; -fx-background-radius: 10 10 0 0; }
+.table-row-cell, .tree-cell { -fx-background-color: transparent; -fx-padding: 6; }
+.table-row-cell:odd { -fx-background-color: -voyage-paper; }
+.table-row-cell:filled:selected, .tree-cell:filled:selected { -fx-background-color: -monet-secondary-container; }
+.list-cell { -fx-background-radius: 10; }
+.scroll-bar:vertical .thumb, .scroll-bar:horizontal .thumb { -fx-background-color: -voyage-line; -fx-background-radius: 8; }
+.scroll-bar:vertical .thumb:hover, .scroll-bar:horizontal .thumb:hover { -fx-background-color: -voyage-muted; }
+.scroll-pane, .scroll-pane > .viewport { -fx-background-color: transparent; }
+.log-window { -fx-background-radius: 14; }
+.log-window .jfx-button { -fx-background-radius: 8; }
+
+/* Keep home-specific geometry after the generic button rules. */
+.voyage-nav { -fx-padding: 8 20; -fx-background-radius: 12; }
+.voyage-explore { -fx-padding: 9 14; }
+.omni-window-buttons > .jfx-button { -fx-padding: 0; -fx-background-radius: 20; }
+.omni-launch-controls > .launch-button { -fx-padding: 5 16; -fx-background-radius: 13 0 0 13; }
+.omni-launch-controls > .menu-button { -fx-padding: 0; -fx-background-radius: 0 13 13 0; }
